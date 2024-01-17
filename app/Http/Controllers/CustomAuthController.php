@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class CustomAuthController extends Controller
 {
+    public function home(){
+        return view('home.index');
+    }
    public function register(){
 
     return view('auth.register');
@@ -40,7 +43,8 @@ class CustomAuthController extends Controller
    }
 
    public function login(){
+    return view('auth.login');
 
-    
+
      }
 }
