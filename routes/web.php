@@ -20,6 +20,6 @@ Route::get('/', function () {
 Route::get('/register', [CustomAuthController::class, 'register'])->name('register');
 Route::get('/login', [CustomAuthController::class, 'login'])->name('login');
 
-Route::post('/register', [CustomAuthController::class, 'store'])->name('auth.store');
+Route::post('/register', [CustomAuthController::class, 'authStore'])->name('auth.store');
 Route::post('/login', [CustomAuthController::class, 'authentication'])->name('auth.authentication');
 Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
