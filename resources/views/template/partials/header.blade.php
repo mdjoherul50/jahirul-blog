@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, intial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jahirul Blog</title>
     <!--Stylesheet----------------------------------->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('home/css/style.css')}}" />
     <!--fav-icon------------------------------------->
     <link rel="shortcut icon" href="images/fav-icon.svg" />
     <!--poppins-font-family-------------------------->
@@ -41,14 +41,15 @@
             <a href="{{route('home.index')}}">Home</a>
             <a href="#">All Blog</a>
             <a href="#">About</a>
-            <a href="{{ route('register') }}" class="login-menu">Register</a>
+            {{-- <a href="{{ route('register') }}" class="login-menu">Register</a>
             <a href="{{ route('login') }}" class="login-menu">Login</a>
-            <a href="{{ route('logout') }}" class="login-menu">Logout</a>
-            {{-- @if (auth()->check())
+            <a href="{{ route('logout') }}" class="login-menu">Logout</a> --}}
+            @if (auth()->check())
                 <a href="{{ route('logout') }}" class="login-menu">Logout</a>
             @else
+                <a href="{{ route('register') }}" class="login-menu">Register</a>
                 <a href="{{ route('login') }}" class="login-menu">Login</a>
-            @endif --}}
+            @endif
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>

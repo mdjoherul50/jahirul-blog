@@ -47,4 +47,44 @@ class CustomAuthController extends Controller
 
 
      }
+     public function authentication(Request $request){
+        $credentials =  $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        // dd($request->password);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard1');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
+     public function logout(Request $request)
+     {
+         // auth()->logout();
+
+         Auth::logout();
+
+         $request->session()->invalidate();
+
+         $request->session()->regenerateToken();
+
+         return redirect('/');
+     }
+     public function loginUsers()
+     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('dashboard.partials.navbar', compact('user'));
+        }
+     }
+
+
+
 }

@@ -5,14 +5,30 @@
             <div class="form-title">
                 <h2>Login</h2>
             </div>
-            <form action="" class="login-form " >
-                <div class="form-item">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <form action="{{route('auth.authentication')}}" class="login-form " method="POST">
+                @csrf
+            <div class="form-item">
                     <label for="email">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="User email">
+                    <input type="text" name="email" id="email" placeholder="User email" value="{{old('email')}}">
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-item">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" placeholder="User password">
+                    @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 </div>
                 <button class="form-button" type="submit">Login</button>
             </form>
